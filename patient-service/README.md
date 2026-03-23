@@ -30,5 +30,33 @@ public class Patient {
 @Valid @RequestBody PatientRequestDTO patientRequestDTO
 ```
 
+## Swagger
+Much easier then in go, maybe (?) 
+But go ones have embedded UI
+
+Build Depedencies
+```
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.7.0</version>
+</dependency>
+```
+
+### Implement
+At least use 2 things :
+- Tag
+- Operation
+
+To check docs :
+```
+{server}:{port}/v3/api-docs
+// example
+localhost:4000/v3/api-docs
+```
+
+Use editor to get the UI
+
+
 
 
