@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  billing-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: billing-service:latest
+    container_name: "billing-service"
+    ports:
+      - "4001:4001"
+      - "9001:9001"
+    restart: unless-stopped
+    networks:
+      - internal
+
+networks:
+  internal:
+    external: true
