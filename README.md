@@ -49,9 +49,6 @@ Replace :
 - pass with {YOUR_PASS_applicaton.properties}
 
 
-
-
-
 ### Repository
 ```java
 //  JpaRepo<{model_name}, {primary key}>
@@ -82,6 +79,7 @@ Run command in makefile, Some options
 - make build
 - make up
 - make down
+
 
 
 

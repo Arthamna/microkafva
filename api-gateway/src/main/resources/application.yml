@@ -1,0 +1,47 @@
+server:
+    port: 4004
+
+spring:
+    cloud:
+        gateway:
+            routes:
+
+    ## REST CLIENT -> http://localhost:4004/auth/login
+    ## API GATEWAY -> http://auth-service:4005/login 
+                - id: auth-service-route
+                  uri: http://auth-service:4005
+                  predicates:
+                  - Path=/auth/**
+                  filters:
+                  - StripPrefix=1
+                  
+    ## REST CLIENT -> http://localhost:4004/api/patients
+    ## API GATEWAY -> http://patient-service:4000/patients 
+    ## http://patient-service:4000 is based on docker config, this is the local service
+    # Name for filter based on {}GatewayFilterFactory              
+                - id: patient-service-route
+                  uri: http://patient-service:4000
+                  predicates:
+                  - Path=/api/patients/**
+                  filters:
+                  - StripPrefix=1
+                  - JwtValidation
+
+    # patient docs
+                - id: api-docs-patient-route
+                  uri: http://patient-service:4000
+                  predicates:
+                  - Path=/api-docs/patients
+                  filters:
+                  - RewritePath=/api-docs/patients,/v3/api-docs
+    ## rewrite(a,b) = a to b, so it will be http://patient-service:4000/v3/api-docs 
+                     
+    # auth docs
+                - id: api-docs-auth-route
+                  uri: http://auth-service:4005
+                  predicates:
+                  - Path=/api-docs/auth
+                  filters:
+                  - RewritePath=/api-docs/auth,/v3/api-docs
+
+                    

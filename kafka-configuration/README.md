@@ -47,5 +47,10 @@ KAFKA_CFG_PROCESS_ROLES=controller,broker
 
 Setup Kafka GUI with `Tools for Apache Kafka` Extension
 
+Setup with Kafbat :
+
+Run Command :
+
+
 Setup topic Kafka :
 - 

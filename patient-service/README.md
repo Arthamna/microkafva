@@ -32,7 +32,9 @@ public class Patient {
 
 ## Swagger
 Much easier then in go, maybe (?) 
-But go ones have embedded UI
+But go have embedded UI
+
+This one, we need swagger console/ui
 
 Build Depedencies
 ```
@@ -56,6 +58,26 @@ localhost:4000/v3/api-docs
 ```
 
 Use editor to get the UI
+
+
+## Kafka 
+Kafka producer class
+=> send event to given topic
+
+Define event template messages
+
+Based on Protofile that describe what are the event in 
+
+Event interchangeable with messages
+
+### Rebuild protos 
+Use clean, then compile (refresh start)
+
+#### Check Kafka Messages
+
+Kafka => Topic => Messages
+
+Consumer and producer are programmatically created
 
 
 

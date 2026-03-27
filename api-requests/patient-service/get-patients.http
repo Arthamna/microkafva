@@ -1,1 +1,10 @@
-GET http://localhost:4000/patients
+## now : use api-gateway
+GET http://localhost:4004/api/patients
+
+Authorization : Bearer emptyadfajahgio
+
+## old port :
+# GET http://localhost:4000/patients
+
+## api docs :
+# GET http://localhost:4004/api-docs/patients
