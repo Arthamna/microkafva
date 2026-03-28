@@ -3,7 +3,16 @@
 # POST http://localhost:4005/login
 
 # api-gateway (no extra newline)
-POST http://localhost:4004/auth/login
+# POST http://localhost:4004/auth/login
+# Content-Type: application/json
+
+# {
+#   "email": "testuser@test.com",
+#   "password": "password123"
+# }
+
+# localstack domain example
+POST http://lb-4f5f92e9.elb.localhost.localstack.cloud:4004/auth/login
 Content-Type: application/json
 
 {
@@ -11,5 +20,6 @@ Content-Type: application/json
   "password": "password123"
 }
 
+# GET http://lb-4e0dc99c.elb.localhost.localstack.cloud:4004/api-docs/auth
 
 # > {% client.global.set("token", response.body.token) %}

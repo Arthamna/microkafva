@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: patient-service:0.0.1-SNAPSHOT
+    image: patient-service:latest
     container_name: "patient-service"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://patient-service-db:5432/patient-service-db

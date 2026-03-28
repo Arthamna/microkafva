@@ -1,88 +1,71 @@
 # Microservices with Java
 
-
 Re-engineering microservices with VSCode setup (cos it was build on IntelijIDEA at first)
 
 ## VSCode 
 ### How to setup project
 
 Requirement (Extensions):
-- Spring Boot Extension Pack 
+- Spring Boot Extension Pack. 
 - Java Extension Pack.
 
 ### Start Comamnd
-Command : Spring initialzr : Create a (maven/gradle/etc) project 
+Command : 
 
-setup :
-- springboot -v
-- group 
-- artifact
-- package name
-- depedencies
-
-### Generate selected code
-Select code -> Source Action -> Generate ...
-
-- Application Properties ?
-    - Auto update with jpa.hibernate.ddl-auto 
+`Spring initialzr : Create a (maven/gradle/etc) project` 
 
 
-Currently hard_coded properties  
 
-Checking :
+## How to Run :
+Requirements :
+- Localstack
+- Docker Desktop
+- AWS cli
+
+- LocalStack
+Create localstack account and get personal auth token
+
+Configure localstack with auth token, leave other settings to default 
+
+- Install AWS CLI
+
+Configure aws with :
 ```
-localhost:{PORT}/h2-console
+aws configure
 ```
 
-### Run application
-Find entry or main point (in my case, it's on PatientServiceApplication.java)
-Characteristic :
-- Have `public static void main(String[] args)` 
+- Create Docker Image 
+With docker compose and Makefile command
 
-There will be run|debug options
-
-### In Memory DB
-
-Replace :
-- JDBC URL with `jdbc:h2:mem:testdb`
-- usn with {YOUR_USN_applicaton.properties}
-- pass with {YOUR_PASS_applicaton.properties}
-
-
-### Repository
-```java
-//  JpaRepo<{model_name}, {primary key}>
-interface PatientRepository extends JpaRepository<Patient, UUID> 
+- Run Localstack :
+```
+./infrastructure/localstack-deploy.sh
 ```
 
 
-## Docker 
-Outline :
-```python
-# base image + step
-FROM ... AS builder 
-# workdir
-# build
+Domain should be shown in command:
 
-# another steps (let's say until final)
-# port
-# entrypoint
+```
+aws --endpoint-url=http://localhost:4566 elbv2 describe-load-balancers \
+    --query "LoadBalancers[0].DNSName" --output text
 ```
 
-Steps : Sequence of instructions
 
-why use steps when we can build sequentially ?
-
-Run command in makefile, Some options
-
+### Run Command 
+Makefile in each services, Some options :
 - make clean
 - make build
 - make up
 - make down
 
 
+## Error Handling
 
+If encounter any error in running script, maybe because depedencies issue :
+```
+aws --endpoint-url=http://localhost:4566 cloudformation describe-stack-events --stack-name patient-management --output table
+```
 
-
+Check error on log table
 
 
