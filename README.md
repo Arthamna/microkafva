@@ -2,8 +2,11 @@
 
 Re-engineering microservices with VSCode setup (cos it was build on IntelijIDEA at first)
 
-## VSCode 
-### How to setup project
+## Architecture
+![](image-1.png)
+![](image.png)
+
+## VSCode Setup
 
 Requirement (Extensions):
 - Spring Boot Extension Pack. 
@@ -14,7 +17,13 @@ Command :
 
 `Spring initialzr : Create a (maven/gradle/etc) project` 
 
+Then setup :
 
+- springboot version
+- group
+- artifact
+- package name
+- depedencies
 
 ## How to Run :
 Requirements :
@@ -67,5 +76,8 @@ aws --endpoint-url=http://localhost:4566 cloudformation describe-stack-events --
 ```
 
 Check error on log table
+
+### To Do (?)
+Currently hard_coded properties, so there will be .env.example  
 
 
